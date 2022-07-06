@@ -1,3 +1,4 @@
+package vitals;
 import org.junit.Test;
 
 public class TestVitals {
