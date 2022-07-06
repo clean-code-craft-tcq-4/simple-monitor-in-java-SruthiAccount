@@ -37,14 +37,6 @@ static boolean checkChargeRate(float chargeRate) {
     public static void main(String[] args) {
     	System.out.println(batteryIsOk(25, 70, 0.7f) == true);
         System.out.println(batteryIsOk(50, 85, 0.0f) == false);
-        TestVitals test=new TestVitals();
-        test.testBatteryIsOk();
-        test.testBatteryIsOkAllFailed();
-        test.testBatteryIsOkChargeRateFailed();
-        test.testBatteryIsOkSocFailed();
-        test.testBatteryIsOkTempFailed();
-        test.testCheckChargeRate();
-        test.testCheckLessThanMinSoc();
         System.out.println("Some more tests needed");
     }
 }
