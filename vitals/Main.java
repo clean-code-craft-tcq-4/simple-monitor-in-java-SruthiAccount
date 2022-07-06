@@ -1,4 +1,4 @@
-
+package vitals;
 public class Main {
 	static float  minTemperature=0.0f;
 	static float maxTemperature=45.0f;
