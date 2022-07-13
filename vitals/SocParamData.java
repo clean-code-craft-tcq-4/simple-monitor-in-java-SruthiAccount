@@ -1,15 +1,13 @@
 package vitals;
 
 public class SocParamData implements ParamDataInterface {
-	float minValue;
-	float maxValue;
+	float minValue = 20.0f;
+	float maxValue = 80.0f;
 	float thresholdPercent;
 	boolean needWarning;
 
 	@Override
-	public void setData(float minValue, float maxValue, float thresholdPercent, boolean needWarning) {
-		this.minValue = minValue;
-		this.maxValue = maxValue;
+	public void setData(float thresholdPercent, boolean needWarning) {
 		this.thresholdPercent = thresholdPercent;
 		this.needWarning = needWarning;
 

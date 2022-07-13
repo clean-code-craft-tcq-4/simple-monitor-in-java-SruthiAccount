@@ -16,21 +16,23 @@ public class Main {
 
 	}
 
+	static int langIndex;
+
 	static boolean batteryIsOk(float temperature, float soc, float chargeRate, boolean needTempWarning,
-			boolean needSocWarning, boolean needChargerateWarning, int lang) {
+			boolean needSocWarning, boolean needChargerateWarning) {
 		TempParamData tempParam = new TempParamData();
-		tempParam.setData(0.0f, 45.0f, 5.0f, needTempWarning);
+		tempParam.setData(5.0f, needTempWarning);
 		SocParamData socParam = new SocParamData();
-		socParam.setData(20.0f, 80.0f, 5.0f, needSocWarning);
+		socParam.setData(5.0f, needSocWarning);
 		ChargeRateParamData crParam = new ChargeRateParamData();
-		crParam.setData(0.0f, 0.8f, 5.0f, needChargerateWarning);
-		Boolean tempCheckParam = checkParam("Temperature", temperature, tempParam, lang);
-		Boolean socCheckParam = checkParam("State of Charge", soc, socParam, lang);
-		Boolean chargeRateCheckParam = checkParam("Charge Rate", chargeRate, crParam, lang);
+		crParam.setData(5.0f, needChargerateWarning);
+		Boolean tempCheckParam = checkParam("Temperature", temperature, tempParam);
+		Boolean socCheckParam = checkParam("State of Charge", soc, socParam);
+		Boolean chargeRateCheckParam = checkParam("Charge Rate", chargeRate, crParam);
 		return tempCheckParam && socCheckParam && chargeRateCheckParam;
 	}
 
-	static boolean checkParam(String param, float input, ParamDataInterface data, int langIndex) {
+	static boolean checkParam(String param, float input, ParamDataInterface data) {
 		float minValue = data.getValue("minValue");
 		float maxValue = data.getValue("maxValue");
 		float thresholdPercent = data.getValue("thresholdPercent");
@@ -67,9 +69,12 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(batteryIsOk(1.25f, 78, 0.802f, true, true, true, Languages.ENGLISH.getIndex()) == false);
-		System.out.println(batteryIsOk(1.25f, 78, 0.802f, false, true, false, Languages.GERMAN.getIndex()) == false);
-		System.out.println(batteryIsOk(50, 85, 0.0f, true, true, true, Languages.ENGLISH.getIndex()) == false);
+		langIndex = Languages.ENGLISH.getIndex();
+		System.out.println(batteryIsOk(1.25f, 78, 0.802f, true, true, true) == false);
+		langIndex = Languages.GERMAN.getIndex();
+		System.out.println(batteryIsOk(1.25f, 78, 0.802f, false, true, false) == false);
+		langIndex = Languages.ENGLISH.getIndex();
+		System.out.println(batteryIsOk(50, 85, 0.0f, true, true, true) == false);
 		System.out.println("Some more tests needed");
 	}
 }

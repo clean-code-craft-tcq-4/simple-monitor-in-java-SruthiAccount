@@ -1,15 +1,13 @@
 package vitals;
 
 public class TempParamData implements ParamDataInterface {
-	float minValue;
-	float maxValue;
+	float minValue = 0.0f;
+	float maxValue = 45.0f;
 	float thresholdPercent;
 	boolean needWarning;
 
 	@Override
-	public void setData(float minValue, float maxValue, float thresholdPercent, boolean needWarning) {
-		this.minValue = minValue;
-		this.maxValue = maxValue;
+	public void setData(float thresholdPercent, boolean needWarning) {
 		this.thresholdPercent = thresholdPercent;
 		this.needWarning = needWarning;
 
