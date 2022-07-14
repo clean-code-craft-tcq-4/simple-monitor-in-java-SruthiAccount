@@ -14,14 +14,21 @@ public class TempParamData implements ParamDataInterface {
 	}
 
 	@Override
-	public float getValue(String valueName) {
-		if (valueName.contentEquals("minValue"))
-			return minValue;
-		else if (valueName.contentEquals("maxValue"))
-			return maxValue;
-		else if (valueName.contentEquals("thresholdPercent"))
-			return thresholdPercent;
-		return 0.0f;
+	public float getMinValue() {
+		// TODO Auto-generated method stub
+		return minValue;
+	}
+
+	@Override
+	public float getMaxValue() {
+		// TODO Auto-generated method stub
+		return maxValue;
+	}
+
+	@Override
+	public float getThreshold() {
+		// TODO Auto-generated method stub
+		return thresholdPercent;
 	}
 
 	@Override

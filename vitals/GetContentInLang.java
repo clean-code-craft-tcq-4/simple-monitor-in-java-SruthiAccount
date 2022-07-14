@@ -3,24 +3,32 @@ package vitals;
 public class GetContentInLang {
 	static String getParamInLang(String param) {
 		if (Main.langIndex == 1) {
-			if (param.equalsIgnoreCase("Temperature"))
-				return "Temperatur";
-			if (param.equalsIgnoreCase("State of Charge"))
-				return "Ladezustand";
-			if (param.equalsIgnoreCase("charge rate"))
-				return "Ladestrom";
-			else
-				return "";
+			return getParamInGerman(param);
 		} else {
-			if (param.equalsIgnoreCase("Temperature"))
-				return "Temperature";
-			if (param.equalsIgnoreCase("State of Charge"))
-				return "State of Charge";
-			if (param.equalsIgnoreCase("charge rate"))
-				return "charge rate";
-			else
-				return "";
+			return getParamInEnglish(param);
 		}
+	}
+
+	static String getParamInGerman(String param) {
+		if (param.equalsIgnoreCase("Temperature"))
+			return "Temperatur";
+		if (param.equalsIgnoreCase("State of Charge"))
+			return "Ladezustand";
+		if (param.equalsIgnoreCase("charge rate"))
+			return "Ladestrom";
+		else
+			return "";
+	}
+
+	static String getParamInEnglish(String param) {
+		if (param.equalsIgnoreCase("Temperature"))
+			return "Temperature";
+		if (param.equalsIgnoreCase("State of Charge"))
+			return "State of Charge";
+		if (param.equalsIgnoreCase("charge rate"))
+			return "charge rate";
+		else
+			return "";
 	}
 
 	static String getLowBreachInLang() {
