@@ -39,35 +39,40 @@ public class Main {
 		float thresholdValue = thresholdPercent * maxValue / 100;
 		String printContent = GetContentInLang.getParamInLang(param);
 		if (input < minValue || input > maxValue) {
-			if (data.getWarning()) {
+			//if (data.getWarning()) {
+				
+				  if (input > minValue - thresholdValue && input < minValue) { printContent =
+				  printContent.concat(GetContentInLang.getLowBreachInLang()); } else if (input
+				  < maxValue + thresholdValue && input > maxValue) { printContent =
+				  printContent.concat(GetContentInLang.getHighBreachInLang()); } else {
+				  printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang()); }
+				  
+				 
 				/*
-				 * if (input > minValue - thresholdValue && input < minValue) { printContent =
-				 * printContent.concat(GetContentInLang.getLowBreachInLang()); } else if (input
-				 * < maxValue + thresholdValue && input > maxValue) { printContent =
-				 * printContent.concat(GetContentInLang.getHighBreachInLang()); } else {
-				 * printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang()); }
-				 * 
+				 * printContent=(input > minValue - thresholdValue && input <
+				 * minValue)?printContent.concat(GetContentInLang.getLowBreachInLang()): (input
+				 * < maxValue + thresholdValue && input > maxValue)
+				 * ?printContent.concat(GetContentInLang.getHighBreachInLang()):
+				 * printContent.concat(GetContentInLang.getOutOfRangeInLang());
 				 */
-				printContent=(input > minValue - thresholdValue && input < minValue)?printContent.concat(GetContentInLang.getLowBreachInLang()):
-					(input < maxValue + thresholdValue && input > maxValue) ?printContent.concat(GetContentInLang.getHighBreachInLang()):
-						 printContent.concat(GetContentInLang.getOutOfRangeInLang());
-				} else
-				printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
+				  /*}
+				  else
+				printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());*/
 			System.out.println(printContent);
 			return false;
 			
 		} else {
-			if (data.getWarning()) {
-				/*
-				 * if (input < minValue + thresholdValue) { printContent =
-				 * printContent.concat(GetContentInLang.getLowWarnInLang()); } else if (input >
-				 * maxValue - thresholdValue) { printContent =
-				 * printContent.concat(GetContentInLang.getHighWarnInLang()); } else {
-				 * printContent = printContent.concat(GetContentInLang.getInRangeInLang()); }
-				 */
-			printContent=(input < minValue + thresholdValue)?printContent.concat(GetContentInLang.getLowWarnInLang()):(input > maxValue - thresholdValue)?printContent.concat(GetContentInLang.getHighWarnInLang()): printContent.concat(GetContentInLang.getInRangeInLang());
+			//if (data.getWarning()) {
+				
+				  if (input < minValue + thresholdValue) { printContent =
+				  printContent.concat(GetContentInLang.getLowWarnInLang()); } else if (input >
+				  maxValue - thresholdValue) { printContent =
+				  printContent.concat(GetContentInLang.getHighWarnInLang()); } else {
+				  printContent = printContent.concat(GetContentInLang.getInRangeInLang()); }
+				 
+			//printContent=(input < minValue + thresholdValue)?printContent.concat(GetContentInLang.getLowWarnInLang()):(input > maxValue - thresholdValue)?printContent.concat(GetContentInLang.getHighWarnInLang()): printContent.concat(GetContentInLang.getInRangeInLang());
 			System.out.println(printContent);
-			}
+			//}
 
 			return true;
 		}
