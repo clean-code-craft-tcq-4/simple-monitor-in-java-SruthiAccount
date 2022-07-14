@@ -1,4 +1,4 @@
-package vitals;
+//package vitals;
 
 public class ChargeRateParamData implements ParamDataInterface {
 	float minValue = 0.0f;

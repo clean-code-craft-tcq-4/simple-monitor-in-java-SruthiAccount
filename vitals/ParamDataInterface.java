@@ -1,4 +1,4 @@
-package vitals;
+//package vitals;
 
 public interface ParamDataInterface {
 	public void setData( float thresholdPercent, boolean needWarning);
