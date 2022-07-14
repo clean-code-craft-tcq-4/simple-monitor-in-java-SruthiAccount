@@ -12,23 +12,21 @@ public class GetContentInLang {
 	static String getParamInGerman(String param) {
 		if (param.equalsIgnoreCase("Temperature"))
 			return "Temperatur";
-		if (param.equalsIgnoreCase("State of Charge"))
+		else if (param.equalsIgnoreCase("State of Charge"))
 			return "Ladezustand";
-		if (param.equalsIgnoreCase("charge rate"))
-			return "Ladestrom";
 		else
-			return "";
+			return "Ladestrom";
+
 	}
 
 	static String getParamInEnglish(String param) {
 		if (param.equalsIgnoreCase("Temperature"))
 			return "Temperature";
-		if (param.equalsIgnoreCase("State of Charge"))
+		else if (param.equalsIgnoreCase("State of Charge"))
 			return "State of Charge";
-		if (param.equalsIgnoreCase("charge rate"))
-			return "charge rate";
 		else
-			return "";
+			return "charge rate";
+
 	}
 
 	static String getLowBreachInLang() {

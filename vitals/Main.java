@@ -19,7 +19,7 @@ public class Main {
 	static int langIndex;
 
 	static boolean batteryIsOk(float temperature, float soc, float chargeRate, boolean needTempWarning,
-	   boolean needSocWarning, boolean needChargerateWarning) {
+			boolean needSocWarning, boolean needChargerateWarning) {
 		TempParamData tempParam = new TempParamData();
 		tempParam.setData(5.0f, needTempWarning);
 		SocParamData socParam = new SocParamData();
@@ -40,41 +40,47 @@ public class Main {
 		String printContent = GetContentInLang.getParamInLang(param);
 		if (input < minValue || input > maxValue) {
 			if (data.getWarning()) {
-				validateBreach(input,minValue,thresholdValue,maxValue,param);
-				}
-				  else
+				validateBreach(input, minValue, thresholdValue, maxValue, param);
+			} else
 				printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
 			System.out.println(printContent);
 			return false;
-			
+
 		} else {
 			if (data.getWarning()) {
-				validateWarning(input,minValue,thresholdValue,maxValue,param);
-			}
-			else
-				printContent=printContent.concat(GetContentInLang.getInRangeInLang());
+				validateWarning(input, minValue, thresholdValue, maxValue, param);
+			} else
+				printContent = printContent.concat(GetContentInLang.getInRangeInLang());
 
 			return true;
 		}
 	}
-public static void validateBreach(float input, float minValue, float thresholdValue, float maxValue,String param) {
-	String printContent = GetContentInLang.getParamInLang(param);
-	if (input > minValue - thresholdValue && input < minValue) { printContent =
-			  printContent.concat(GetContentInLang.getLowBreachInLang()); } else if (input
-			  < maxValue + thresholdValue && input > maxValue) { printContent =
-			  printContent.concat(GetContentInLang.getHighBreachInLang()); } else {
-			  printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang()); }
-		System.out.println(printContent);	  	
-}
-public static void validateWarning(float input, float minValue, float thresholdValue, float maxValue, String param) {
-	String printContent = GetContentInLang.getParamInLang(param);
-	if (input < minValue + thresholdValue) { printContent =
-			  printContent.concat(GetContentInLang.getLowWarnInLang()); } else if (input >
-			  maxValue - thresholdValue) { printContent =
-			  printContent.concat(GetContentInLang.getHighWarnInLang()); } else {
-			  printContent = printContent.concat(GetContentInLang.getInRangeInLang()); }
-			System.out.println(printContent); 
-}
+
+	public static void validateBreach(float input, float minValue, float thresholdValue, float maxValue, String param) {
+		String printContent = GetContentInLang.getParamInLang(param);
+		if (input > minValue - thresholdValue && input < minValue) {
+			printContent = printContent.concat(GetContentInLang.getLowBreachInLang());
+		} else if (input < maxValue + thresholdValue && input > maxValue) {
+			printContent = printContent.concat(GetContentInLang.getHighBreachInLang());
+		} else {
+			printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
+		}
+		System.out.println(printContent);
+	}
+
+	public static void validateWarning(float input, float minValue, float thresholdValue, float maxValue,
+			String param) {
+		String printContent = GetContentInLang.getParamInLang(param);
+		if (input < minValue + thresholdValue) {
+			printContent = printContent.concat(GetContentInLang.getLowWarnInLang());
+		} else if (input > maxValue - thresholdValue) {
+			printContent = printContent.concat(GetContentInLang.getHighWarnInLang());
+		} else {
+			printContent = printContent.concat(GetContentInLang.getInRangeInLang());
+		}
+		System.out.println(printContent);
+	}
+
 	public static void main(String[] args) {
 		langIndex = Languages.ENGLISH.getIndex();
 		System.out.println(batteryIsOk(1.25f, 78, 0.802f, true, true, true) == false);
