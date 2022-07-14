@@ -38,46 +38,52 @@ public class Main {
 		float thresholdPercent = data.getThreshold();
 		float thresholdValue = thresholdPercent * maxValue / 100;
 		String printContent = GetContentInLang.getParamInLang(param);
-		boolean checkValue = input < minValue || input > maxValue;
-		if (checkValue && data.getWarning()) {
-			validateBreach(input, minValue, thresholdValue, maxValue, param);
-			return false;
-		} else if (checkValue) {
+		if (input < minValue || input > maxValue) {
+			if (data.getWarning()) {
+				System.out.println(validateBreach(input, minValue, thresholdValue, maxValue, param));
+				return false;
+			} 
 			printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
 			System.out.println(printContent);
 			return false;
+
 		} else {
 			if (data.getWarning()) {
-				validateWarning(input, minValue, thresholdValue, maxValue, param);
-			} else
+				System.out.println(validateWarning(input, minValue, thresholdValue, maxValue, param));
+				return true;
+			} 
 				printContent = printContent.concat(GetContentInLang.getInRangeInLang());
 
 			return true;
 		}
 	}
 
-	public static void validateBreach(float input, float minValue, float thresholdValue, float maxValue, String param) {
+	public static String validateBreach(float input, float minValue, float thresholdValue, float maxValue, String param) {
 		String printContent = GetContentInLang.getParamInLang(param);
 		if (input > minValue - thresholdValue && input < minValue) {
 			printContent = printContent.concat(GetContentInLang.getLowBreachInLang());
+			return printContent;
 		} else if (input < maxValue + thresholdValue && input > maxValue) {
 			printContent = printContent.concat(GetContentInLang.getHighBreachInLang());
-		} else {
+			return printContent;
+		} 
 			printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
-		}
-		System.out.println(printContent);
+		    return printContent;
+		
 	}
 
-	public static void validateWarning(float input, float minValue, float thresholdValue, float maxValue,
+	public static String validateWarning(float input, float minValue, float thresholdValue, float maxValue,
 			String param) {
 		String printContent = GetContentInLang.getParamInLang(param);
 		if (input < minValue + thresholdValue) {
 			printContent = printContent.concat(GetContentInLang.getLowWarnInLang());
+			return printContent;
 		} else if (input > maxValue - thresholdValue) {
 			printContent = printContent.concat(GetContentInLang.getHighWarnInLang());
-		} else {
+			return printContent;
+		} 
 			printContent = printContent.concat(GetContentInLang.getInRangeInLang());
-		}
+		return printContent;
 		System.out.println(printContent);
 	}
 
