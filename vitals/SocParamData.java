@@ -1,4 +1,4 @@
-//package vitals;
+package vitals;
 
 public class SocParamData implements ParamDataInterface {
 	float minValue = 20.0f;

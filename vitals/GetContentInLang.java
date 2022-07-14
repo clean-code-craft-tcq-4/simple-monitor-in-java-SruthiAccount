@@ -1,4 +1,4 @@
-//package vitals;
+package vitals;
 
 public class GetContentInLang {
 	static String getParamInLang(String param) {

@@ -1,4 +1,4 @@
-//package vitals;
+package vitals;
 
 public class Main {
 	static public enum Languages {
