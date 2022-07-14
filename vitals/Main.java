@@ -38,14 +38,14 @@ public class Main {
 		float thresholdPercent = data.getThreshold();
 		float thresholdValue = thresholdPercent * maxValue / 100;
 		String printContent = GetContentInLang.getParamInLang(param);
-		if (input < minValue || input > maxValue) {
-			if (data.getWarning()) {
-				validateBreach(input, minValue, thresholdValue, maxValue, param);
-			} else
-				printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
+		boolean checkValue = input < minValue || input > maxValue;
+		if (checkValue && data.getWarning()) {
+			validateBreach(input, minValue, thresholdValue, maxValue, param);
+			return false;
+		} else if (checkValue) {
+			printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
 			System.out.println(printContent);
 			return false;
-
 		} else {
 			if (data.getWarning()) {
 				validateWarning(input, minValue, thresholdValue, maxValue, param);
