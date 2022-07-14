@@ -42,7 +42,7 @@ public class Main {
 			if (data.getWarning()) {
 				System.out.println(validateBreach(input, minValue, thresholdValue, maxValue, param));
 				return false;
-			} 
+			}
 			printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
 			System.out.println(printContent);
 			return false;
@@ -51,14 +51,15 @@ public class Main {
 			if (data.getWarning()) {
 				System.out.println(validateWarning(input, minValue, thresholdValue, maxValue, param));
 				return true;
-			} 
-				printContent = printContent.concat(GetContentInLang.getInRangeInLang());
+			}
+			printContent = printContent.concat(GetContentInLang.getInRangeInLang());
 
 			return true;
 		}
 	}
 
-	public static String validateBreach(float input, float minValue, float thresholdValue, float maxValue, String param) {
+	public static String validateBreach(float input, float minValue, float thresholdValue, float maxValue,
+			String param) {
 		String printContent = GetContentInLang.getParamInLang(param);
 		if (input > minValue - thresholdValue && input < minValue) {
 			printContent = printContent.concat(GetContentInLang.getLowBreachInLang());
@@ -66,10 +67,10 @@ public class Main {
 		} else if (input < maxValue + thresholdValue && input > maxValue) {
 			printContent = printContent.concat(GetContentInLang.getHighBreachInLang());
 			return printContent;
-		} 
-			printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
-		    return printContent;
-		
+		}
+		printContent = printContent.concat(GetContentInLang.getOutOfRangeInLang());
+		return printContent;
+
 	}
 
 	public static String validateWarning(float input, float minValue, float thresholdValue, float maxValue,
@@ -81,10 +82,11 @@ public class Main {
 		} else if (input > maxValue - thresholdValue) {
 			printContent = printContent.concat(GetContentInLang.getHighWarnInLang());
 			return printContent;
-		} 
-			printContent = printContent.concat(GetContentInLang.getInRangeInLang());
-		return printContent;
+		}
+		printContent = printContent.concat(GetContentInLang.getInRangeInLang());
 		System.out.println(printContent);
+		return printContent;
+
 	}
 
 	public static void main(String[] args) {
